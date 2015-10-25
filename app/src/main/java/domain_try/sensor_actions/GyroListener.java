@@ -33,17 +33,27 @@ public class GyroListener implements SensorEventListener {
 
             // Calculate the angular speed of the sample
             float omegaMagnitude = (float)sqrt(axisX*axisX + axisY*axisY + axisZ*axisZ);
-        if(abs(axisX) > 0.2)
-            ((EditText)MainActivity.getView1()).setText(""+axisX);
+        int count = MainActivity.sp.getCount();
+        if(axisX > 0.3) {
 
-        if(abs(axisY) > 0.2)
-        ((EditText)MainActivity.getView2()).setText(""+axisY);
+           int pos = MainActivity.sp.getSelectedItemPosition();
+            if(pos==count-1)
+                MainActivity.sp.setSelection(count-1);
+            else
+                MainActivity.sp.setSelection(pos+1);
 
-        if(abs(axisZ) > 0.2)
-        ((EditText)MainActivity.getView3()).setText(""+axisZ);
+        }
+        else if(axisX < -0.3) {
+            int pos = MainActivity.sp.getSelectedItemPosition();
+            if(pos==0)
+                MainActivity.sp.setSelection(0);
+            else
+                MainActivity.sp.setSelection(pos-1);
 
-        ((EditText)MainActivity.getView4()).setText(""+omegaMagnitude);
-            // Normalize the rotation vector if it's big enough to get the axis
+
+        }
+
+           // Normalize the rotation vector if it's big enough to get the axis
         // (that is, EPSILON should represent your maximum allowable margin of error)
 //        if (omegaMagnitude > EPSILON) {
 //                axisX /= omegaMagnitude;

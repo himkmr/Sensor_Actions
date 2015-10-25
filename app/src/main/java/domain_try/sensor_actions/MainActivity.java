@@ -1,5 +1,6 @@
 package domain_try.sensor_actions;
 
+import android.database.Cursor;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +8,10 @@ import android.text.style.EasyEditSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import com.j256.ormlite.android.AndroidConnectionSource;
 import com.j256.ormlite.dao.Dao;
@@ -18,6 +22,8 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import DBUtils.Database_main;
 import DatabaseTables.Users;
@@ -29,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     static EditText view3;
     static EditText view4;
     static Thread t1;
+    static Spinner sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         view2= (EditText)findViewById(R.id.editText2);
         view3= (EditText)findViewById(R.id.editText3);
         view4= (EditText)findViewById(R.id.editText4);
-
+        sp= (Spinner)findViewById(R.id.spinner);
         SensorManager mSensorManager = (SensorManager) getSystemService(this.SENSOR_SERVICE);
         MotionDetector md = new MotionDetector(mSensorManager);
 
@@ -49,28 +56,44 @@ public class MainActivity extends AppCompatActivity {
 
         //create the table
         try {
-            TableUtils.createTableIfNotExists(con, Users.class);
+                    Dao<Users, String> userdao =
+                            DaoManager.createDao(con, Users.class);
+                    if(!userdao.isTableExists())
+                    {
+                        TableUtils.createTable(con, Users.class);
+
+                        Users usr = new Users("Himanshu", "123", 1000);
+                    Users usr2 = new Users("Manu", "123", 1000);
+                    Users usr3 = new Users("Himanshu1", "123", 1000);
+                    Users usr4= new Users("Manu1", "123", 1000);
+                    Users usr5 = new Users("Himanshu2", "123", 1000);
+                    userdao.create(usr);
+                    userdao.create(usr2);userdao.create(usr4);
+                    userdao.create(usr3);userdao.create(usr5);
+
+                }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
 
 
         //createDAO - Database Access Object and User object(new row for table)
         try {
                 Dao<Users, String> userdao =
                     DaoManager.createDao(con, Users.class);
-
-                    Users usr = new Users("Himanshu", "123", 1000);
-
-           //persist the database Object
-            userdao.create(usr);
-
-            Users user2 = userdao.queryForId("Himanshu");
-            view1.setText(user2.getName());
-            view2.setText(user2.getPassword());
-            view3.setText(user2.getBalance()+"");
+                    List<Users> allusers = userdao.queryForAll();
+            ArrayAdapter<String> aArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+            sp.setAdapter(aArrayAdapter);
+            ArrayAdapter adp =(ArrayAdapter)sp.getAdapter();
+            for(Users u:allusers)
+            {
+                adp.add(u.getName());
+            }
 
         } catch (SQLException e) {
+            view4.setText("Exception Caught"+e.getMessage());
             try {
                 con.close();
                 } catch (IOException e1) {
@@ -78,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
             }
             e.printStackTrace();
         }
-     //   t1 = new Thread(md);
-      //  t1.start();
+        t1 = new Thread(md);
+        t1.start();
 
     }
 

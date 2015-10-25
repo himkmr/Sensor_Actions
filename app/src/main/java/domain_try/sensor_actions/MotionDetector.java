@@ -9,17 +9,22 @@ import android.hardware.SensorManager;
 public class MotionDetector implements Runnable {
     private SensorManager mSensorManager;
     private Sensor mSensor;
-    public MotionDetector (SensorManager sm)
-    {
+
+    public MotionDetector(SensorManager sm) {
         this.mSensorManager = sm;
     }
+
     @Override
     public void run() {
+        try {
+            //  mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+            mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+            GyroListener list = new GyroListener();
+            mSensorManager.registerListener(list, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-      //  mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        GyroListener list = new GyroListener();
-        mSensorManager.registerListener(list, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }
