@@ -10,13 +10,25 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Users {
     public Users()
     {}
-
-    public Users(String name, String password, double balance)
+    public Users(String name, String username, String password, double balance)
     {
         this.name = name;
         this.balance = balance;
         this.password = password;
+        this.username = username;
     }
+    @DatabaseField(id= true)
+    private String username;
+    @DatabaseField
+    private String name;
+    @DatabaseField
+    private String password;
+    @DatabaseField
+    private double balance;
+
+
+
+    //getters and setters
     public String getName() {
         return name;
     }
@@ -41,10 +53,8 @@ public class Users {
         this.balance = balance;
     }
 
-    @DatabaseField(id= true)
-        private String name;
-        @DatabaseField
-        private String password;
-        @DatabaseField
-        private double balance;
+    public String getUsername() {return username;}
+
+    public void setUsername(String username) {this.username = username;}
+
 }

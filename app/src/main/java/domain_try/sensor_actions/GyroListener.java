@@ -38,7 +38,7 @@ public class GyroListener implements SensorEventListener {
 
            int pos = MainActivity.sp.getSelectedItemPosition();
             if(pos==count-1)
-                MainActivity.sp.setSelection(count-1);
+                MainActivity.sp.setSelection(count-1 );
             else
                 MainActivity.sp.setSelection(pos+1);
 

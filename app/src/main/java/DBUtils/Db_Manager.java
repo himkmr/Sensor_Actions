@@ -42,17 +42,6 @@ public class Db_Manager extends SQLiteOpenHelper {
       //  db.insert(DICTIONARY_TABLE_NAME, null, values);
     }
 
-
-
-//    public Cursor getAllTitles(SQLiteDatabase db) {
-//        return db.query(DICTIONARY_TABLE_NAME, new String[]{
-//                        "KEY_WORD",
-//                        "KEY_DEFINITION",
-//                },
-//                null,
-//                null,
-//                null, null, null);
-  //  }
 }
 
 
