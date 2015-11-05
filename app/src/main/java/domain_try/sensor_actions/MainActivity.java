@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     static Button b2;
     static Thread t1;
     static Spinner sp;
+    static Users user =null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
