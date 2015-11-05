@@ -79,7 +79,7 @@
         android:text="Sign In"
         android:id="@+id/button"
         style="@style/Base.TextAppearance.AppCompat.Headline"
-        android:onClick="findUser"
+        android:onClick="on_login"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true" />
 
