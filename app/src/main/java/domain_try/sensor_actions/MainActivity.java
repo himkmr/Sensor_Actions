@@ -110,6 +110,19 @@ public class MainActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
     }
+    @Override
+    public void onBackPressed() {
+        android.os.Process.killProcess(android.os.Process.myPid());
+    }
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        usernameView.setText("");
+        passwordView.setText("");
+        view4.setText("");
+    }
+
     public static boolean findUser()
     {
         String uname =usernameView.getText().toString();
