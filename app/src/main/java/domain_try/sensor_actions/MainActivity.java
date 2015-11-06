@@ -72,36 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-//
-//        //createDAO - Database Access Object and User object(new row for table)
-//        try {
-//                Dao<Users, String> userdao =
-//                    DaoManager.createDao(con, Users.class);
-//
-//                List<Users> allusers = userdao.queryForAll(); //get all the Users
-//                //ArrayAdapter for Spinner
-//                ArrayAdapter<String> arrayadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
-//                sp.setAdapter(arrayadapter);
-//                ArrayAdapter adp =(ArrayAdapter)sp.getAdapter();
-//                for(Users u:allusers)
-//                {
-//                    adp.add(u.getName());
-//                }
-//
-//        } catch (SQLException e) {
-//            view4.setText("Exception Caught"+e.getMessage());
-//            try {
-//                    con.close();
-//                } catch (IOException e1) {
-//                e1.printStackTrace();
-//            }
-//            e.printStackTrace();
-//        }
-//        t1 = new Thread(md);
-//        t1.start();
-
     }
 
     @Override

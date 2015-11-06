@@ -5,26 +5,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
 
-    android:background="@mipmap/ic_launcher">
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2"
-        android:orientation ="vertical">
-
-    </LinearLayout>
+    android:background="@mipmap/ic_launcher"
+    android:visibility="visible">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
         android:id="@+id/textView4"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#5f1c18" />
 
     <TextView
         android:text="@string/heading"
@@ -32,17 +24,23 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#edf6ff"
+        android:textColor="#21081b"
+        android:textSize="35dp"
+        android:shadowColor="#97a8e5"
+        android:singleLine="false" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Enter Username"
+        android:text="Username"
         android:id="@+id/textView"
-        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="170dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:textColor="#30182a"
+        android:textSize="25dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -50,18 +48,23 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText"
-        android:layout_below="@+id/textView"
+        android:background="#a1f0fcff"
+        android:layout_marginTop="200dp"
         android:layout_centerHorizontal="true"
-        android:background="#f0fcff" />
+        android:textSize="25dp"
+        android:paddingStart="5dp"
+        android:textColor="#30182a" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Enter Password"
+        android:text="Password"
         android:id="@+id/textView3"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="240dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#30182a"
+        android:textSize="25dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -69,29 +72,41 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText2"
-        android:layout_below="@+id/textView3"
-        android:layout_alignStart="@+id/editText"
-        android:background="#f0fcff" />
+        android:background="#abf0fcff"
+        android:layout_marginTop="270dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp"
+        android:textColor="#30182a" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="Sign in"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:layout_width="132dp"
+        android:layout_height="54dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="2"
         android:id="@+id/button"
-        style="@style/Base.TextAppearance.AppCompat.Headline"
-        android:onClick="on_login"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="330dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="on_login" />
 
     <Button
-        style="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape_medium"
         android:text="New User?"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="2"
         android:id="@+id/button2"
         android:onClick="registerUser"
-        android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true" />
-
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp" />
 </RelativeLayout>

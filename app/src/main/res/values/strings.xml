@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sensor_Actions</string>
 
-    <string name="heading">Playing with Sensors</string>
+    <string name="heading">Easy Transfer</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
 

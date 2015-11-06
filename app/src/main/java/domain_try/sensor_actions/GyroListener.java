@@ -33,22 +33,22 @@ public class GyroListener implements SensorEventListener {
 
             // Calculate the angular speed of the sample
             float omegaMagnitude = (float)sqrt(axisX*axisX + axisY*axisY + axisZ*axisZ);
-        int count = MainActivity.sp.getCount();
+        int count = ShowProfile.sp.getCount();
         if(axisX > 0.3) {
 
-           int pos = MainActivity.sp.getSelectedItemPosition();
+           int pos = ShowProfile.sp.getSelectedItemPosition();
             if(pos==count-1)
-                MainActivity.sp.setSelection(count-1 );
+                ShowProfile.sp.setSelection(count-1 );
             else
-                MainActivity.sp.setSelection(pos+1);
+                ShowProfile.sp.setSelection(pos+1);
 
         }
         else if(axisX < -0.3) {
-            int pos = MainActivity.sp.getSelectedItemPosition();
+            int pos = ShowProfile.sp.getSelectedItemPosition();
             if(pos==0)
-                MainActivity.sp.setSelection(0);
+                ShowProfile.sp.setSelection(0);
             else
-                MainActivity.sp.setSelection(pos-1);
+                ShowProfile.sp.setSelection(pos-1);
 
 
         }
